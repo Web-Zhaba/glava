@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://3o85w6a2nqxy"]
+
+[ext_resource type="Script" uid="uid://dgwvp45h5ayw4" path="res://scripts/Main.gd" id="1_dgwvp"]
+[ext_resource type="Script" uid="uid://fnqec1xqf1uh" path="res://scripts/DistrictMap.gd" id="2_map"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.117647, 0.141176, 0.168627, 1)
+
+[node name="Main" type="Control" unique_id=1904092227]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dgwvp")
+
+[node name="Background" type="Panel" parent="." unique_id=2019538719]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=137382473]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="RootVBox" type="VBoxContainer" parent="MarginContainer" unique_id=1004745790]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer/RootVBox" unique_id=1929792196]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LblDate" type="Label" parent="MarginContainer/RootVBox/TopBar" unique_id=252833672]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🗓 Октябрь 2019"
+
+[node name="LblSeason" type="Label" parent="MarginContainer/RootVBox/TopBar" unique_id=315921170]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Сезон: Осень (Распутица)"
+
+[node name="VSeparator1" type="VSeparator" parent="MarginContainer/RootVBox/TopBar" unique_id=149260543]
+layout_mode = 2
+
+[node name="LblBudget" type="Label" parent="MarginContainer/RootVBox/TopBar" unique_id=1285240185]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Казна: 2 500 000 ₽"
+
+[node name="LblPeople" type="Label" parent="MarginContainer/RootVBox/TopBar" unique_id=1558508978]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Народ: 54%"
+
+[node name="LblLoyality" type="Label" parent="MarginContainer/RootVBox/TopBar" unique_id=825960882]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Область: 50%"
+
+[node name="LblPopulation" type="Label" parent="MarginContainer/RootVBox/TopBar" unique_id=1095376808]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Население: 3 345 чел."
+
+[node name="TopSpacer" type="Control" parent="MarginContainer/RootVBox/TopBar" unique_id=444305914]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MapControls" type="HBoxContainer" parent="MarginContainer/RootVBox/TopBar" unique_id=439479061]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BtnCenterMap" type="Button" parent="MarginContainer/RootVBox/TopBar/MapControls" unique_id=113893182]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Центрировать карту на райцентре (с. Спасское)"
+text = "📍 Райцентр"
+
+[node name="BtnZoomIn" type="Button" parent="MarginContainer/RootVBox/TopBar/MapControls" unique_id=773241046]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Приблизить карту (+)"
+text = "+"
+
+[node name="BtnZoomOut" type="Button" parent="MarginContainer/RootVBox/TopBar/MapControls" unique_id=376228000]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Отдалить карту (-)"
+text = "−"
+
+[node name="MainContent" type="HSplitContainer" parent="MarginContainer/RootVBox" unique_id=889317045]
+layout_mode = 2
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(620)
+split_offset = 620
+
+[node name="MapContainer" type="PanelContainer" parent="MarginContainer/RootVBox/MainContent" unique_id=157479794]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+
+[node name="DistrictMap" type="Control" parent="MarginContainer/RootVBox/MainContent/MapContainer" unique_id=1625525903]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+script = ExtResource("2_map")
+
+[node name="MapTipOverlay" type="Label" parent="MarginContainer/RootVBox/MainContent/MapContainer" unique_id=588663581]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 0.7)
+theme_override_font_sizes/font_size = 12
+text = "ЛКМ / ПКМ: перетаскивание • Колесо мыши: зум • Клик по объекту: осмотр   "
+
+[node name="RightDesk" type="PanelContainer" parent="MarginContainer/RootVBox/MainContent" unique_id=1750748882]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DeskVBox" type="VBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk" unique_id=1243857083]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TabButtons" type="HBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox" unique_id=328461310]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BtnTabEvents" type="Button" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/TabButtons" unique_id=338114348]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "📜 Сводка и ЧП"
+
+[node name="BtnTabInspector" type="Button" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/TabButtons" unique_id=701828007]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🏡 Паспорт объекта"
+
+[node name="BtnTabDrsu" type="Button" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/TabButtons" unique_id=1572821571]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🚜 База ДРСУ"
+
+[node name="ViewsStack" type="MarginContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox" unique_id=707629154]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ViewEvents" type="VBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack" unique_id=471053488]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="ContentArea" type="RichTextLabel" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewEvents" unique_id=316744708]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="ChoiceButtons" type="VBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewEvents" unique_id=1866820019]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ViewInspector" type="VBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack" unique_id=1671270988]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="InspectorHeader" type="VBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewInspector" unique_id=732974452]
+layout_mode = 2
+
+[node name="LblInspectorTitle" type="Label" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewInspector/InspectorHeader" unique_id=423438473]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Название объекта"
+
+[node name="LblInspectorSubtitle" type="Label" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewInspector/InspectorHeader" unique_id=1584231647]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 12
+text = "Подзаголовок"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewInspector" unique_id=270573969]
+layout_mode = 2
+
+[node name="InspectorContent" type="RichTextLabel" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewInspector" unique_id=322348180]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="InspectorActions" type="VBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewInspector" unique_id=1609909700]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ViewDrsu" type="VBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack" unique_id=534419145]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="DrsuContent" type="RichTextLabel" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewDrsu" unique_id=2082869319]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="DrsuActions" type="VBoxContainer" parent="MarginContainer/RootVBox/MainContent/RightDesk/DeskVBox/ViewsStack/ViewDrsu" unique_id=1099231406]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BottomBar" type="HBoxContainer" parent="MarginContainer/RootVBox" unique_id=1245370433]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LblDistrictStatus" type="Label" parent="MarginContainer/RootVBox/BottomBar" unique_id=599219312]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+text = "Оперативная обстановка: Штатная"
+
+[node name="BottomSpacer" type="Control" parent="MarginContainer/RootVBox/BottomBar" unique_id=1851641329]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BtnNextTurn" type="Button" parent="MarginContainer/RootVBox/BottomBar" unique_id=445548879]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 36)
+layout_mode = 2
+text = "Следующий месяц (Конец хода) ▶"
